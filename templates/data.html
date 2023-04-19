@@ -1,0 +1,54 @@
+{% extends 'home.html' %}
+{% block body %}
+
+{% if login %}
+    You are logged in as <strong>{{ session['username'] }}</strong> <br />
+    <a href={{ url_for('logout') }}>logout</a>
+{% else  %}
+{{ url_for('login_home') }}
+{%endif%}
+
+
+<h2>{{ title }}</h2>
+{% if user_data %}
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+{% for message in messages %}  
+    <p>{{ message }}</p>  
+{% endfor %}  
+{% endif %}  
+{% endwith %}
+{% endif %}  
+<table border = 1>
+<tr>
+{% for head_title in head_titles %}
+<th>{{ head_title }}</th>
+{% endfor %}
+</tr>
+
+{% for item in user_data %}
+<tr>
+<td>{{item.id}}</td>
+<td><a href="/search_for_posts/{{item.id}}">{{item.name}}</a></td>
+<td>{{item.username}}</td>
+<td>{{item.email}}</td>
+</tr>
+{% endfor %}
+
+</table>
+<form method = 'GET'  action = '/search'>
+<h3> for user posts press this button : </h3>
+<input value = 'Posts' type = 'submit'>
+</form>
+
+<form method = 'GET'  action = '/form'>
+    <h3> create Posts : </h3>
+    <input value = 'create post' type = 'submit'>
+    </form>
+
+<form method = 'GET'  action = '/userform'>
+    <h3> create Users : </h3>
+    <input value = 'create user' type = 'submit'>
+</form>
+
+{% endblock %}

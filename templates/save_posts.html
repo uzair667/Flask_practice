@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+{% block body %}
+
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+{% for message in messages %}  
+    <p>{{ message }}</p>  
+{% endfor %}  
+{% endif %}  
+{% endwith %}
+
+
+<form method = 'POST' action = '/save_posts'>
+
+    <label>Choose a user:</label>
+    
+
+    <select name="users">
+    {% for name in names %}
+      <option value = {{name.id}}>{{name.name}}</option>
+    {% endfor %}
+    </select> 
+    <br>
+    <label> Add Title:</label>
+
+    <input type = 'text' name="title" rows="4" cols="50"> 
+    <br>
+    <label>Add Post:</label>
+
+    <textarea name="post" rows="4" cols="50">
+    
+    </textarea> 
+    <br>
+    <input value = 'submit' type = 'submit'>
+    
+    </form>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'home.html' %}
+{% block body %}
+
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+{% for message in messages %}  
+    <p>{{ message }}</p>  
+{% endfor %}  
+{% endif %}  
+{% endwith %}
+
+<h2> login </h2>
+<form method = 'POST' action = '/login'>
+
+    <label> username:</label>
+    <input type = 'text' name="username" rows="4" cols="50"> 
+    <br>
+    <label>password:</label>
+
+    <input type = 'Password' name="password" rows="4" cols="50">
+    
+    </textarea> 
+    <br>
+    <input value = 'login' type = 'submit'>
+    
+</form>
+<br>
+<form  action = '/login_single_user'>
+    <label> user login:</label>
+    <input value = 'user login' type = 'submit'>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+{% block body %}
+
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+{% for message in messages %}  
+    <p>{{ message }}</p>  
+{% endfor %}  
+{% endif %}  
+{% endwith %}
+
+
+<form method = "POST" action = "save_single_user_post">
+<label> add title:</label>
+
+    <input type = 'text' name="title" rows="4" cols="50"> 
+    <br>
+    <label>add post:</label>
+
+    <textarea name="post" rows="4" cols="50">
+    
+    </textarea> 
+    <br>
+    <input value = 'submit' type = 'submit'>
+    
+    </form>
+{% endblock %}    

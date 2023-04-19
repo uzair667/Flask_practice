@@ -1,0 +1,22 @@
+{% extends 'home.html' %}
+{% block body %}
+
+
+<form method = 'POST' action = '/user_posts_data'>
+
+    <input  name = 'searchid' width = '10' placeholder = 'search ID'>
+    <input value = 'search' type = 'submit'>
+    
+    </form>
+
+
+{% for username,post in data.items() %}
+<h3> {{username}} </h3>
+{% for items in post %}
+<p>{{items}}</p>
+{% endfor %}
+{% endfor %}    
+
+{% endblock %}
+</body>
+</html>

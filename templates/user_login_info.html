@@ -1,0 +1,42 @@
+{% extends 'home.html' %}
+{% block body %}
+
+{% if login %}
+    You are logged in as <strong>{{ session['username'] }}</strong> <br />
+    <a href={{ url_for('logout') }}>logout</a>
+{% else  %}
+{{ url_for('logout') }}
+{%endif%}
+
+<h2>{{ title }}</h2>
+{% if user_data %}
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+{% for message in messages %}  
+    <p>{{ message }}</p>  
+{% endfor %}  
+{% endif %}  
+{% endwith %}
+{% endif %}  
+<table border = 1>
+<tr>
+{% for head_title in head_titles %}
+<th>{{ head_title }}</th>
+{% endfor %}
+</tr>
+
+{% for item in user_data %}
+<tr>
+<td>{{item.post_id}}</td>
+<td>{{item.user_id}}</td>
+<td>{{item.title}}</td>
+<td>{{item.body}}</td>
+</tr>
+{% endfor %}
+
+<form method = 'GET'  action = '/single_user_posts'>
+    <h3> create posts : </h3>
+    <input value = 'insert post' type = 'submit'>
+    </form>
+
+{% endblock %}

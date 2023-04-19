@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% block body %}
+
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+{% for message in messages %}  
+    <p>{{ message }}</p>  
+{% endfor %}  
+{% endif %}  
+{% endwith %}  
+
+<h2>user information</h2>
+<form method = 'POST' action = '/save_users'>
+
+    <br>
+    <label> add name:</label>
+
+    <input type = 'text' name="name" rows="4" cols="50"> 
+    <br>
+    <label>add username:</label>
+
+    <input type = 'text' name="username" rows="4" cols="50">
+
+    <br>
+    <label>add email:</label>
+
+    <input type = 'text' name="email" rows="4" cols="50">
+    <br>
+    <label>add password:</label>
+
+    <input type = 'Password' name="password" rows="4" cols="50">
+    <br>
+    <input value = 'submit' type = 'submit'>
+    
+    </form>
+{% endblock %}

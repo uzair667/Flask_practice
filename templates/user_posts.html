@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+{% block body %}
+<h2>{{ title }}</h2>
+
+{% if search_posts %}
+<table border = 1>
+<tr>
+{% for head_title in head_titles %}
+<th>{{ head_title }}</th>
+{% endfor %}
+</tr>
+
+
+{% for item in search_posts %}
+<tr>
+<td> {{ user_search_id }} </td>
+<td> {{ item.body }} </td> 
+</tr>
+
+{% endfor %}
+</table>
+{% else %}
+<h2> No Record Found For This ID : {{user_search_id}} </h2>
+{% endif %}
+{% endblock %}

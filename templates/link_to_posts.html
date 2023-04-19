@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+{% block body %}
+<h2>{{ title }} : {{username}}</h2>
+<h3> Name of User is : {{name}}</h3>
+<h3>Email of User is: {{email}}</h3>
+{% if username_posts %}
+<table border = 1>
+<tr>
+{% for head_title in head_titles %}
+<th>{{ head_title }}</th>
+{% endfor %}
+</tr>
+
+
+{% for item in username_posts %}
+<tr>
+<td> {{ item.title }} </td>
+<td>{{item.body}}</td>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<h2> No Record Found For This ID : {{ID}} </h2>
+{% endif %}
+{% endblock %}
